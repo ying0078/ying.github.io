@@ -1,0 +1,2029 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Java 代码审计之华夏 ERP CMS v2.3, 芜风">
+    <meta name="description" content="且将新火试新茶，诗酒趁年华">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Java 代码审计之华夏 ERP CMS v2.3 | 芜风</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">芜风</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">芜风</div>
+        <div class="logo-desc">
+            
+            且将新火试新茶，诗酒趁年华
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Java 代码审计之华夏 ERP CMS v2.3</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
+                                <span class="chip bg-color">代码审计</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" class="post-category">
+                                代码审计
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-09-30
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    17 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Java-代码审计之华夏-ERP-CMS-v2-3"><a href="#Java-代码审计之华夏-ERP-CMS-v2-3" class="headerlink" title="Java 代码审计之华夏 ERP CMS v2.3"></a>Java 代码审计之华夏 ERP CMS v2.3</h1><p>项目地址: <a target="_blank" rel="noopener" href="https://github.com/jishenghua/jshERP/releases/tag/2.3">Release 华夏ERP_v2.3</a></p>
+<h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><ul>
+<li>这个 CMS 被用于了蓝帽杯的比赛当中，是让我们进行修洞了，当时因为自己环境的一些问题没有把这道题目修好，感觉到非常遗憾。</li>
+</ul>
+<p>趁着自己最近学了一会儿的代码审计，想尝试自己审计一遍。</p>
+<h2 id="0x02-环境"><a href="#0x02-环境" class="headerlink" title="0x02 环境"></a>0x02 环境</h2><p>简单搭即可，导 sql，修改端口为 8081，方便测试。</p>
+<h2 id="0x03-代码审计"><a href="#0x03-代码审计" class="headerlink" title="0x03 代码审计"></a>0x03 代码审计</h2><h3 id="1-审计准备"><a href="#1-审计准备" class="headerlink" title="1. 审计准备"></a>1. 审计准备</h3><p>我个人的习惯是先看一看 pom.xml，再看一些 Filter</p>
+<h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h4><img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/fastjson1255.png" class="">
+
+<p>这里有个 fastjson 1.2.55 的洞，或许可以进行反序列化的攻击，不确定，cy 一下。</p>
+<p>还有一个 log4j2 的漏洞，我们后续会提到</p>
+<p>其他组件基本就没啥了，我们去看 Filter</p>
+<h4 id="Filter-审计"><a href="#Filter-审计" class="headerlink" title="Filter 审计"></a>Filter 审计</h4><img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/NotFilter.png" class="">
+
+<p>使用 <code>@WebInitParam</code> 注解配置多个 name，对 <code>.css#.js#.jpg#.png#.gif#.ico</code>，<code>/user/login#/user/registerUser#/v2/api-docs</code>资源请求的时候不会进行拦截。</p>
+<p>再来看具体的 Filter 做了什么工作，关于 Filter：<a href="https://drun1baby.github.io/2022/08/19/Java%E5%86%85%E5%AD%98%E9%A9%AC%E7%B3%BB%E5%88%97-01-%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9%E5%AD%A6%E4%B9%A0/">Java内存马系列-01-基础内容学习)</a></p>
+<ul>
+<li>我们需要去到 <code>doFilter()</code> 方法中去看</li>
+</ul>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/doFilter.png" class="">
+
+<p>这个 <code>doFilter()</code> 方法，先是做了一个很基础的拦截器，代码如下</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">HttpServletRequest</span> servletRequest <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">)</span> request<span class="token punctuation">;</span>  
+<span class="token class-name">HttpServletResponse</span> servletResponse <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span><span class="token punctuation">)</span> response<span class="token punctuation">;</span>  
+<span class="token class-name">String</span> requestUrl <span class="token operator">=</span> servletRequest<span class="token punctuation">.</span><span class="token function">getRequestURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token comment">//具体，比如：处理若用户未登录，则跳转到登录页  </span>
+<span class="token class-name">Object</span> userInfo <span class="token operator">=</span> servletRequest<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里有几种情况是不阻止的：register.html，login.html，以及 doc.html；因为如果这几个网站被 ban，业务都跑不了了。</p>
+<p>继续往下看，其中定义了一个 <code>verify()</code> 方法，这是拿来自己添加不被拦截的网页的，可能是当时开发者想要测试功能性，所以就多了这么一个 <code>verify()</code> 方法。</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/ignoredList.png" class="">
+
+<p>这里也和上面的 <code>@WebInitParam</code> 注解对应起来了，当我们不处于登录的状态下，也可以直接访问 <code>.css，.js</code> 这些文件，测试如图。</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/ignoredSuccessTest.png" class="">
+
+<p>再往下看，是关于 <code>allowUrls</code>  的一个判断，简单来说 <code>allowUrls</code> 就是加白，这也和我们上面讲的 <code>@WebInitParam</code> 注解对上了，如图</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/allowUrls.png" class="">
+
+<ul>
+<li>现在我们把 <code>Filter</code> 全部都解读完了，做个小结，并且思考</li>
+</ul>
+<h4 id="关于审计完-Filter-后的思考"><a href="#关于审计完-Filter-后的思考" class="headerlink" title="关于审计完 Filter 后的思考"></a>关于审计完 Filter 后的思考</h4><p><strong>小总结</strong></p>
+<p>1、加了白，对应的资源加白在 <code>ignoredUrl</code> 中，以 <code>#</code> 分割，看似没什么问题；还有对应的 Path 加白，加了 <code>/user/login</code>，<code>/user/registerUser</code> 以及 <code>/v2/api-docs</code></p>
+<p>2、没有进行 XSS 的转义过滤和 SQL 注入的恶意字符过滤，一般来说，以 RuoYi 的项目为例：都会存在一个专门过滤的 Filter，但是这里面没有，或许会埋下部分伏笔。</p>
+<p><strong>思索</strong></p>
+<p>对于加白的思索：是否会存在潜在的未授权访问？对于资源加白 ———— <code>ignoredList</code> 的判断只是进行了正则的判断，这并不符合开发的安全性，正确的写法应该使用 <code>endsWith()</code> 来判断 URL 是否以 <code>.css</code>；<code>.js</code> 等资源后缀结尾</p>
+<p>对于 URL 加白的思考：使用 <code>startsWith()</code> 方法来判断 URL 是否是白名单开头的时候，可以使用目录穿越来骗过判断，导致可以绕过认证请求。这种方式比较神奇，后续会打断点调试看看。</p>
+<h4 id="审计准备小结"><a href="#审计准备小结" class="headerlink" title="审计准备小结"></a>审计准备小结</h4><p>先看 pom.xml，再看 Filter。</p>
+<p>这里总结出来，单看 Filter 就看出来几个隐藏的漏洞了：比如可能存在的 SQL 注入，比如可能存在的 XSS；还有一些越权的漏洞</p>
+<h3 id="2-SQL-注入"><a href="#2-SQL-注入" class="headerlink" title="2. SQL 注入"></a>2. SQL 注入</h3><ul>
+<li>关于 SQL 注入在 Java 当中的代码审计可以看我这篇文章：<a href="https://drun1baby.github.io/2022/09/14/Java-OWASP-%E4%B8%AD%E7%9A%84-SQL-%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">Java OWASP 中的 SQL 注入代码审计</a></li>
+</ul>
+<p>根据 pom.xml 我们可以知道这是个 mybatis，所以对于 mybatis 的 SQL 注入，我们可以直接在 <code>mapper_xml</code> 文件夹内进行全局搜索 <code>$</code> 以及 <code>like</code>，<code>in</code> 以及 <code>order by</code>。</p>
+<p>当然，前提是有问题的 SQL 语句当中，输入是可控的。</p>
+<p>我们在 <code>mapper_xml</code> 文件夹下全局搜索 <code>like</code> 关键字</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/SQLike.png" class="">
+
+<p>出师及其顺利！（后面发现并不是）</p>
+<h4 id="失败的-SQL-注入"><a href="#失败的-SQL-注入" class="headerlink" title="失败的 SQL 注入"></a>失败的 SQL 注入</h4><p>我们先点进去看看，大致分析如图</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/AccoutMapperEx.png" class="">
+
+<p>实际开发当中，对应 <code>AccountMapperEx.xml</code> 的一般都是定义在 <code>AccountMapperEx</code> 接口中（如果封装的好的话</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/AccountMapperEx.png" class="">
+
+<p>对应的 controller 文件应该是 <code>AccoutController</code>。对应的 service 文件是 <code>AccoutService</code>，这里一步步逆推，根据反序列化的链子的思维似乎是要出点问题。</p>
+<p>问题在于，最后总是会指向一个 <code>ResourceController</code>，有师傅的文章说可以一直找，我个人认为这种是错误的。</p>
+<p>根据 MVC 架构思维，我们先看 Service 层，定位如图</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/selectByConditionAccount.png" class="">
+
+<p>但是到这个地方就断掉了，说明其实这里，name 并不是可控的，算是一个小失败。</p>
+<blockquote>
+<p>总结一下这次的 SQL 注入失败原因，输入并非可控。</p>
+</blockquote>
+<h4 id="成功的-SQL-注入"><a href="#成功的-SQL-注入" class="headerlink" title="成功的 SQL 注入"></a>成功的 SQL 注入</h4><p>这里我们就直接去找 <code>UserMapperEx.xml</code>，因为这个业务点我认为是非常非常直接的，显山露水的，找可控点更为容易。在 <code>UserMapperEx.xml</code> 里面搜索 <code>like</code> 这一关键字</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/UserMapper.png" class="">
+
+<p>对应的，我们去到接口：<code>UserMapperEx.java</code></p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/UserMapperEx.png" class="">
+
+<p>对应的 Service 接口与 Controller 接口如图</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/countsByUser.png" class="">
+
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/controller.png" class="">
+
+<p>那么试想一下运用到这个 SQL 语句的场景该是什么？很明显在 <code>/addUser</code> 这个情况下是可以触发的。</p>
+<p>我这里访问了 <code>/user/list</code> 页面，抓包后看到了 <code>search</code> 后跟着一堆参数，这堆参数进行 URL 解码后是 <code>userName</code> 与 <code>loginName</code> 的值。</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/nothing.png" class="">
+
+<p>看到这里我立马明白了，其实 <code>countsByUser()</code> 这个有问题的 SQL 语句并不是说只有后端处理 <code>/addUser</code> 接口的时候才会用到，而是只要我以 userName 和 loginName 作为参数进行搜索就会用到。</p>
+<p>我们的 payload 如下</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">&#123;&quot;userName&quot;:&quot;&quot;,&quot;loginName&quot;:&quot;&#39; AND SLEEP(5)-- jsh&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>一个简单的盲注，成功！同时我们在控制台可以看到有如图的 SQL 语句</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/logs.png" class="">
+
+<p>在 Burpsuite 中亦测试成功</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/Sleep.png" class="">
+
+<ul>
+<li>相类似的 SQL 注入在这个项目里面还有很多很多，师傅们在学习的时候可以尝试自己挖掘并测试。</li>
+</ul>
+<h4 id="SQL-注入的修复"><a href="#SQL-注入的修复" class="headerlink" title="SQL 注入的修复"></a>SQL 注入的修复</h4><p>详见这篇文章 <a target="_blank" rel="noopener" href="http://localhost:4000/2022/09/14/Java-OWASP-%E4%B8%AD%E7%9A%84-SQL-%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1">Java OWASP 中的 SQL 注入代码审计</a></p>
+<p>如果对于应急处理，比如很多 AWD Plus 的情况下，建议是写一个 FIiter 来防御，代码如下</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Component</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">WebFilter</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletResponse</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Enumeration</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">/**
+ @ author: Drunkbaby
+ @ usages: 用于 SQL 注入的自定义防护
+ 需要加入相应的 Servlet 环境，因为我这里是纯代码，就不打环境了
+ @ 过滤 url：在 WebFilter 当中添加 urlPatterns
+ */</span>
+
+<span class="token annotation punctuation">@Component</span>
+<span class="token annotation punctuation">@WebFilter</span><span class="token punctuation">(</span>urlPatterns <span class="token operator">=</span> <span class="token string">"/system/role/list"</span><span class="token punctuation">,</span> filterName <span class="token operator">=</span> <span class="token string">"sqlInjectFilter"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> sqlFilter <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">FilterConfig</span> arg0<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> res<span class="token punctuation">,</span> <span class="token class-name">FilterChain</span> chain<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ServletException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">HttpServletRequest</span> request <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">)</span> req<span class="token punctuation">;</span>
+        <span class="token class-name">HttpServletResponse</span> response <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span><span class="token punctuation">)</span> res<span class="token punctuation">;</span>
+        <span class="token comment">// 获得所有请求参数名</span>
+        <span class="token class-name">Enumeration</span> params <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameterNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> sql <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>params<span class="token punctuation">.</span><span class="token function">hasMoreElements</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 得到参数名</span>
+            <span class="token class-name">String</span> name <span class="token operator">=</span> params<span class="token punctuation">.</span><span class="token function">nextElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 得到参数对应值</span>
+            <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> value <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameterValues</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> value<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                sql <span class="token operator">=</span> sql <span class="token operator">+</span> value<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">sqlValidate</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IOException</span><span class="token punctuation">(</span><span class="token string">"您发送请求中的参数中含有非法字符"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            chain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">/**
+     * 参数校验
+     * @param str
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">sqlValidate</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        str <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//统一转为小写</span>
+        <span class="token class-name">String</span> badStr <span class="token operator">=</span> <span class="token string">"select|update|and|or|delete|insert|truncate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute|table"</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> badStrs <span class="token operator">=</span> badStr<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"\\|"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> badStrs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">//循环检测，判断在请求参数当中是否包含SQL关键字</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>badStrs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们可以自定义过滤的恶意字符，比如 <code>--+</code>；<code>&#39;</code> 这些非业务需要的字符。</p>
+<h3 id="3-两个白名单的越权（权限校验绕过）"><a href="#3-两个白名单的越权（权限校验绕过）" class="headerlink" title="3. 两个白名单的越权（权限校验绕过）"></a>3. 两个白名单的越权（权限校验绕过）</h3><ul>
+<li>看完了 SQL 注入，看一下关于前文提到的白名单越权的</li>
+</ul>
+<h4 id="正常业务-URL-加白"><a href="#正常业务-URL-加白" class="headerlink" title="正常业务 URL 加白"></a>正常业务 URL 加白</h4><p>资源加白的问题在前面已经说过了，我们现在直接来复现一遍</p>
+<p>当我们没有处于登录态的时候，发包&#x2F;访问时得到的是一个 302 的重定向回显，如图</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/Login302.png" class="">
+
+<p>前文说到，这几种请求是不会被拦截的：<code>/doc.html</code>，<code>/register.html</code>，<code>/login.html</code></p>
+<p>所以我们构造如下 payload</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">&#x2F;login.html&#x2F;..&#x2F;home.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/ingoreBypass.png" class="">
+
+<p>成功 Bypass</p>
+<h4 id="资源加白"><a href="#资源加白" class="headerlink" title="资源加白"></a>资源加白</h4><p>同上面是一样的，因为没有做严格的 <code>endsWith()</code> 的判断</p>
+<p>payload 如下</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">&#x2F;1.css&#x2F;..&#x2F;home.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/cssBypass.png" class="">
+
+<h4 id="URL-加白"><a href="#URL-加白" class="headerlink" title="URL 加白"></a>URL 加白</h4><p>同样的攻击手段</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">&#x2F;user&#x2F;login&#x2F;..&#x2F;..&#x2F;home.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个攻击不如前两种好用，它要求你知道文件的路径</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/URLBypass.png" class="">
+
+<h4 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h4><p>最简单的应急方法应该是过滤 <code>../</code> ，也就是寻常的目录遍历防御手段一直，这种防御可以直接加在 Filter 里面，代码如下</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token class-name">PathTravelFilter</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>regex<span class="token punctuation">.</span></span><span class="token class-name">Pattern</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ @ author: Drunkbaby
+ @ usages: 用于目录遍历的单个字符防御
+ */</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PathFilter</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token comment">//private static Pattern FilePattern = Pattern.compile("[\\\\/:*?\"&lt;>|]");</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Pattern</span> <span class="token class-name">FilePattern</span> <span class="token operator">=</span> <span class="token class-name">Pattern</span><span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span><span class="token string">"[\\s\\.:?&lt;>|]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//过滤规则</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">filenameFilter</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> str<span class="token operator">==</span><span class="token keyword">null</span><span class="token operator">?</span><span class="token keyword">null</span><span class="token operator">:</span><span class="token class-name">FilePattern</span><span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> str<span class="token operator">=</span><span class="token string">"home/..  &lt;>|logs/../:edata?"</span><span class="token punctuation">;</span>
+        <span class="token comment">//String filenameFilter = filenameFilter(str);</span>
+        <span class="token class-name">String</span> filenameFilter <span class="token operator">=</span> <span class="token function">fileNameValidate</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>filenameFilter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">fileNameValidate</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token class-name">String</span> strInjectListStr <span class="token operator">=</span><span class="token string">"../|./|/..| |&lt;|>|:|?"</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token operator">!=</span>strInjectListStr <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>strInjectListStr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            str <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> badStrs <span class="token operator">=</span> strInjectListStr<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"\\|"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> badStrs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>badStrs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    str<span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>badStrs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> str<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-存储型-XSS"><a href="#4-存储型-XSS" class="headerlink" title="4. 存储型 XSS"></a>4. 存储型 XSS</h3><p>在之前审计 <code>Filter</code> 的时候并未发现针对 XSS 进行了些许过滤</p>
+<p>XSS 本质上是把我们输入的东西拼接到 HTML 语句里面去，这一块我们先随意选取一个界面</p>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;127.0.0.1:8081&#x2F;index.html#&#x2F;pages&#x2F;financial&#x2F;item_in.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在备注当中插入即可，今年蓝帽杯决赛的时候也是出了这个题目，这道题目名叫《赌怪》，我个人对于这道题目的理解就是，这是一个洞很多的 CMS，最好就全修了，但是当时上 Filter 防御失败了。</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/XSS.png" class="">
+
+<p>每一次访问的时候都会造成 XSS</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/StoredXSS.png" class="">
+
+<p>在很多界面都存在这个问题，比如说用户管理这里，添加用户，也会造成存储型 XSS</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/DrunkbabyInfo.png" class="">
+
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/StoredXSSTwo.png" class="">
+
+<h4 id="漏洞修复-1"><a href="#漏洞修复-1" class="headerlink" title="漏洞修复"></a>漏洞修复</h4><p>直接添加 Filter 的方式会比较直接</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token operator">*</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletRequestWrapper</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ @ author: Drunkbaby
+ @ usages: 用于 XSS 的自定义防护
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XSSFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token class-name">FilterConfig</span> filterConfig <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">List</span> urlExclusion <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">FilterConfig</span> filterConfig<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>filterConfig <span class="token operator">=</span> filterConfig<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>filterConfig <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">FilterChain</span> chain<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">HttpServletRequest</span> httpServletRequest <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">)</span> request<span class="token punctuation">;</span>
+        <span class="token class-name">String</span> servletPath <span class="token operator">=</span> httpServletRequest<span class="token punctuation">.</span><span class="token function">getServletPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>urlExclusion <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> urlExclusion<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>servletPath<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            chain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            chain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span><span class="token punctuation">)</span> <span class="token keyword">new</span> <span class="token class-name">XssHttpServletRequestWrapper</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">)</span> request<span class="token punctuation">)</span><span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">List</span> <span class="token function">getUrlExclusion</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> urlExclusion<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setUrlExclusion</span><span class="token punctuation">(</span><span class="token class-name">List</span> urlExclusion<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>urlExclusion <span class="token operator">=</span> urlExclusion<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">XssHttpServletRequestWrapper</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServletRequestWrapper</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">XssHttpServletRequestWrapper</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> servletRequest<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>servletRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getParameterValues</span><span class="token punctuation">(</span><span class="token class-name">String</span> parameter<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> values <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getParameterValues</span><span class="token punctuation">(</span>parameter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>values <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">int</span> count <span class="token operator">=</span> values<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> encodedValues <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>count<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            encodedValues<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cleanXSS</span><span class="token punctuation">(</span>values<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> encodedValues<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token class-name">String</span> parameter<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> value <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span>parameter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token function">cleanXSS</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> value <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">cleanXSS</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">cleanXSS</span><span class="token punctuation">(</span><span class="token class-name">String</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<span class="token comment">//You'll need to remove the spaces from the html entities below</span>
+        value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"\\("</span><span class="token punctuation">,</span> <span class="token string">"&amp; #40;"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"\\)"</span><span class="token punctuation">,</span> <span class="token string">"&amp; #41;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"'"</span><span class="token punctuation">,</span> <span class="token string">"&amp; #39;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"eval\\((.*)\\)"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']"</span><span class="token punctuation">,</span> <span class="token string">"\"\""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"script"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>通过转义恶意字符的方式进行修复，但是我个人认为这里这么修不算是一种好的修法，算是俗修。</p>
+<p>真正修法应该是写一个 Utils 的工具类，把一些输入进行处理，并且因为这里不存在反射型 XSS，还有一种修法，可以把这些要存入数据库的数据进行过滤。这个在实际开发里面用的比较多。</p>
+<h3 id="5-Fastjson-反序列化-RCE"><a href="#5-Fastjson-反序列化-RCE" class="headerlink" title="5. Fastjson 反序列化 RCE"></a>5. Fastjson 反序列化 RCE</h3><p>因为在项目中 <code>Fastjson</code> 版本是 1.2.55，存在 RCE 的漏洞，这里反序列化的地方很多，我们要去找的地方一定是要输入可控的。</p>
+<p>这里我思考了一下，应该直接去找关于 <code>search</code> 的，也就是和上面 SQL 注入的一样，全局搜索 <code>parseObject</code>，找到了 <code>StringUtil</code> 这个工具类</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/parseObject.png" class="">
+
+<p>它的 <code>getInfo()</code> 方法中，是存在一个 <code>parseObject()</code> 反序列化的语句，我们接下来去找谁调用了 <code>StringUtil.getInfo()</code></p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/getInfoUsages.png" class="">
+
+<ul>
+<li>这一个 <code>UserComponent.getUserList()</code> 其实和我们之前在 SQL 注入漏洞里面看到的是一样的，所以对于攻击来说，我们依旧可以把它作为攻击的入口。</li>
+</ul>
+<p>构造一个 URLDns 的请求，payload 如下</p>
+<pre class="line-numbers language-payload" data-language="payload"><code class="language-payload">search&#x3D;&#123;&quot;@type&quot;:&quot;java.net.Inet4Address&quot;,&quot;val&quot;:&quot;xtuit14cnmcrndt2043mwlxoafg74w.oastify.com&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发包如图</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/fastjsonBag.png" class="">
+
+<p>收到了 DNS 请求</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/FastjsonDNS.png" class="">
+
+<ul>
+<li>证明存在 Fastjson 漏洞，然后我们进一步构造 payload，进行弹 shell 实践。</li>
+</ul>
+<p>这里对 jdk 版本是要低一些，并且要先开启 <code>AutoTypeSupport</code></p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/checkAutoType.png" class="">
+
+<p>师傅们可以现在本地进行测试。</p>
+<p>先开启恶意 <code>.class</code> 和 Ldap</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/OpenCalc.png" class="">
+
+<p>弹计算器成功</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/SuccessFastjson.png" class="">
+
+<h4 id="漏洞修复-2"><a href="#漏洞修复-2" class="headerlink" title="漏洞修复"></a>漏洞修复</h4><ul>
+<li>我个人认为这里并不算漏洞，因为并未开启 <code>checkAutoType</code></li>
+</ul>
+<h3 id="6-越权漏洞"><a href="#6-越权漏洞" class="headerlink" title="6. 越权漏洞"></a>6. 越权漏洞</h3><h4 id="越权密码重置"><a href="#越权密码重置" class="headerlink" title="越权密码重置"></a>越权密码重置</h4><p>对应这里，先去看它的接口</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/updateUserController.png" class="">
+
+<p>发现这个业务逻辑的代码是写在 Service 层里面的，跟进一下 Service 层的代码</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/ProblemReset.png" class="">
+
+<p>这里只是简单判断了 <code>&quot;admin&quot;.equals(loginName)</code>，从开发的角度上来说，我个人这里可能更偏向于使用 JWT，或者说加一个 Admin 的白名单，诸如此类的设计思维。</p>
+<p>在判断完 <code>&quot;admin&quot;.equals(loginName)</code> 之后，如果不是 admin，这里就直接进行 <code>user.setPassword()</code> 了，并未将 ID 与 loginName 一一对应。</p>
+<p>漏洞操作如图，先进行密码重置</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/OriId.png" class="">
+
+<p>接着，修改 userId 为其他用户的，这里可以进行批量发包，会导致所有普通用户的密码全部被修改</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/changePwdAttack.png" class="">
+
+<ul>
+<li>这里的这个漏洞，可以和之前我们说的未授权漏洞结合起来。</li>
+</ul>
+<h4 id="越权删除用户"><a href="#越权删除用户" class="headerlink" title="越权删除用户"></a>越权删除用户</h4><ul>
+<li>先去看 <code>deleteUser</code> 对应的接口</li>
+</ul>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/deleteUser.png" class="">
+
+<p>同样，去看 Service 层的业务代码</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/BatDeleteUser.png" class="">
+
+<p>这里其实这么写是也有道理的，我们可以发现普通用户是没有管理用户这个界面的，所以对于代码来说，也是情有可原。</p>
+<p>但是问题就出在 <code>doc.html</code> 中，这个接口文档在被未授权读取之后，能够看到所有的 URL，配合之前的未授权可以进行删库的操作，但是可利用性并不大。</p>
+<p>我们先用 admin 的账户抓一个 <code>deleteUser</code> 的包</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/deteleUserByID.png" class="">
+
+<p>再用我们普通用户权限去抓包，替换 Session，替换 ID，成功删除 admin 的账户。这里的水平越权与垂直越权都是存在的。</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/deleteAdmin.png" class="">
+
+<p>再登录，就是用户不存在了</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/FailedLogin.png" class="">
+
+<h4 id="越权修改用户信息"><a href="#越权修改用户信息" class="headerlink" title="越权修改用户信息"></a>越权修改用户信息</h4><p>对应的接口是 <code>updateUser</code></p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/updateUserController.png" class="">
+
+<p>去到 Service 层，这里有一个 <code>checkUserNameAndLoginName(ue);</code> 的语句，跟进去看一下</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/updateUserNoJudge.png" class="">
+
+<p><code>checkUserNameAndLoginName()</code> 做了一个什么业务呢，它进行 <code>UserName</code> 与 <code>loignName</code> 是否为空的判断</p>
+<p>我们先看 <code>loginName</code> 是否为空的判断</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/getUserListByloginName.png" class="">
+
+<p>再看 <code>userName</code></p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/getUserListByUserName.png" class="">
+
+<blockquote>
+<p>乍一看代码好像没啥问题，这里最大的问题是没有把 <code>loginName</code> 或是 <code>UserName</code> 与 ID 进行一个匹配。</p>
+</blockquote>
+<p>我之前在学开发的时候也被人这么说过，大致意思就是 “这种操作你怎么会不进行一个 ID 与 userName 的判断的啊？亏你还是学安全的”；</p>
+<p>具体的复现就先不复现了，我们重点关注越权漏洞的修复</p>
+<h4 id="漏洞修复-3"><a href="#漏洞修复-3" class="headerlink" title="漏洞修复"></a>漏洞修复</h4><p>实现方式也很简单，在 Mapper 的 SQL 语句中加上 <code>selectIdByUserName</code>  就可以了，这样的话我们只需要进行如下判断</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Long</span> userId<span class="token operator">=</span>userEx<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> loginName<span class="token operator">=</span>userEx<span class="token punctuation">.</span><span class="token function">getLoginName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>userId<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token function">getIdByLoginName</span><span class="token punctuation">(</span>loginName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+    <span class="token comment">// 这里面判断匹配，进行业务代码实现  </span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>  
+    <span class="token keyword">return</span><span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7-经测试，不存在-log4j2-漏洞"><a href="#7-经测试，不存在-log4j2-漏洞" class="headerlink" title="7.  经测试，不存在 log4j2 漏洞"></a>7.  经测试，不存在 log4j2 漏洞</h3><p>之前看其他师傅的文章说，看组件还是有 log4j2 的漏洞的，其实根本没有啊，对应的 maven 仓库，并不显示存在 log4j2 漏洞</p>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/MVN.png" class="">
+
+<h2 id="0x04-关于蓝帽杯决赛-awd-Plus-对于这个-CMS-变样考法的思考"><a href="#0x04-关于蓝帽杯决赛-awd-Plus-对于这个-CMS-变样考法的思考" class="headerlink" title="0x04 关于蓝帽杯决赛 awd Plus 对于这个 CMS 变样考法的思考"></a>0x04 关于蓝帽杯决赛 awd Plus 对于这个 CMS 变样考法的思考</h2><ul>
+<li>当时因为我自己的一些原因没有修出来，赛后看其他队伍的 WP 是这么修的。</li>
+</ul>
+<img src="/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/ban.png" class="">
+
+<p>其实我是有点不太理解的，如果只是一个单纯的入口的话要开启 AutoType 才可以吧，不明白为什么这里算是漏洞点了。</p>
+<p>在请教过 Y4tacker 师傅之后这里总算是明白了！</p>
+<p>1.2.55 的版本也是存在能够不开启 <code>AutoType</code> 的 PoC 的，而且也不少，所以这里也是存在漏洞的。具体的 PoC 可以参考这个仓库<a target="_blank" rel="noopener" href="https://github.com/safe6Sec/Fastjson">https://github.com/safe6Sec/Fastjson</a></p>
+<h3 id="重要点"><a href="#重要点" class="headerlink" title="重要点"></a>重要点</h3><p><code>AutoType</code> 为 false 时 :先黑名单过滤，再白名单过滤，若白名单匹配上则直接加载该类，否则报错</p>
+<p><code>AutoType</code> 为 true 时 :先白名单过滤，匹配成功即可加载该类，否则再黑名单过滤</p>
+<p>要用的 PoC 是 fastjson&lt;&#x3D;1.2.68 的攻击方法，正好这里也有 <code>hikari</code> 的库，所以这个题目应该是这么打的。</p>
+<p>至于在比赛当中的修复，直接把这个入口类 ban 掉即可。有一些其他接口也是存在 <code>parseObject</code> 的反序列化入口，但是输入并不可控，就没有必要管了。</p>
+<h2 id="0x05-小结"><a href="#0x05-小结" class="headerlink" title="0x05 小结"></a>0x05 小结</h2><p>审计 Java 项目可以直接通过全局搜索进行白盒的代码审计，尤其是 SQL 注入，fastjson 反序列化这种漏洞，尤为明显。</p>
+<p>刚入门 Java 不久，还很菜，文章中如有写的不好的地方还望请师傅们指出，感激不尽！</p>
+<h2 id="0x06-参考资料"><a href="#0x06-参考资料" class="headerlink" title="0x06 参考资料"></a>0x06 参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bmjoker/p/14856437.html">https://www.cnblogs.com/bmjoker/p/14856437.html</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Drun1baby</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://drun1baby.github.io/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/">https://drun1baby.github.io/2022/09/30/Java-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E4%B9%8B%E5%8D%8E%E5%A4%8F-ERP-CMS-V2.3/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Drun1baby</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
+                                    <span class="chip bg-color">代码审计</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'mCIu9X4iLP3I0GikUoetB9bV-9Nh9j0Va',
+        appKey: 'ermlV1eoB1YODT088EdXjo6C',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/10/06/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BC3P0%E9%93%BE/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Java反序列化之C3P0链">
+                        
+                        <span class="card-title">Java反序列化之C3P0链</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Java 反序列化之 C3P0 链学习
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/09/28/%E5%88%B7%E5%8A%9B%E6%89%A3%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E7%AE%97%E6%B3%95%E9%81%97%E6%BC%8F%E7%82%B9/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="刷力扣过程中的算法遗漏点">
+                        
+                        <span class="card-title">刷力扣过程中的算法遗漏点</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            刷力扣过程中的算法遗漏点
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('3000')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 芜风<br />'
+            + '文章作者: Drun1baby<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Drun1baby</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "6";
+                        var startDate = "30";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Drun1baby/Drun1baby.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2717763591@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2717763591" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2717763591" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js" async></script>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
